@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] float moveSpeed = 2f;
 
+    private bool isMoving = false;
+    public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
+
     private void Awake()
     {
         playerInput = new PlayerInputSystem();
@@ -35,10 +38,17 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         float input = playerInput.Movement.Move.ReadValue<float>();
+        if (input == 0) 
+        {
+            isMoving = false;
+            return; 
+        }
+        isMoving = true;
         Vector3 newPosition = new Vector3(transform.position.x,
             transform.position.y , transform.position.z + input * Time.deltaTime * moveSpeed);
 
-        rb.MovePosition(newPosition);
+        transform.position = newPosition;
+        //rb.MovePosition(newPosition);
     }
 
 

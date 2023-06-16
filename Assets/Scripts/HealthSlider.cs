@@ -27,8 +27,8 @@ public class HealthSlider : MonoBehaviour
     {
         root = GetComponent<UIDocument>().rootVisualElement;
         healthSlider = root.Q<Slider>("HealthSlider");
-        healthSlider.RegisterCallback<ChangeEvent<float>>(OnHealthSliderValueChange);
-        SliderValue = Mathf.RoundToInt(healthSlider.value);
+        //healthSlider.RegisterCallback<ChangeEvent<float>>(OnHealthSliderValueChange);
+        //SliderValue = Mathf.RoundToInt(healthSlider.value);
     }
 
     void OnHealthSliderValueChange(ChangeEvent<float> e)

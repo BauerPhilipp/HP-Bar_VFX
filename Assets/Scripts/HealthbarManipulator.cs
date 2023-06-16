@@ -10,7 +10,7 @@ public class HealthbarManipulator : MonoBehaviour
 
     //Y boundaries of the mask
     int maxMaskPosition = 1417;
-    int minMakPosition = 230;
+    int minMaskPosition = 230;
 
 
     //returns the value of current health
@@ -33,18 +33,22 @@ public class HealthbarManipulator : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        //HealthSlider.SetMaxValue(maxHealth);
     }
     private void Update()
     {
-        Health = HealthSlider.SliderValue;
-        HealthSlider.SetMaxValue(maxHealth);
+        //Health = HealthSlider.SliderValue;
     }
 
     //set the maxHealth
     public int SetMaxHealth
     {
         get { return maxHealth; }
-        set { maxHealth = value;}
+        set 
+        { 
+            maxHealth = value;
+            //HealthSlider.SetMaxValue(maxHealth);
+        }
     }
 
     void SetHealthBar()
@@ -53,13 +57,13 @@ public class HealthbarManipulator : MonoBehaviour
         {
             float healthPercentage = (float)currentHealth / maxHealth;
             Debug.Log(healthPercentage);
-            float maskValueRange = maxMaskPosition - minMakPosition;
+            float maskValueRange = maxMaskPosition - minMaskPosition;
             healthMask.transform.position = new Vector3(
-                healthMask.position.x, minMakPosition + maskValueRange * healthPercentage, healthMask.position.z);
+                healthMask.position.x, minMaskPosition + maskValueRange * healthPercentage, healthMask.position.z);
         }
         else
         {
-            healthMask.transform.position = new Vector3(healthMask.position.x, minMakPosition, healthMask.position.z);
+            healthMask.transform.position = new Vector3(healthMask.position.x, minMaskPosition, healthMask.position.z);
         }
     }
 }

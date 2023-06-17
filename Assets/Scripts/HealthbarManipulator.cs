@@ -6,13 +6,28 @@ public class HealthbarManipulator : MonoBehaviour
 {
     [SerializeField] Transform healthMask;
     [SerializeField] int maxHealth;
+    [SerializeField] SpriteRenderer healthbarColor;
     int currentHealth;
+
 
     //Y boundaries of the mask
     int maxMaskPosition = 1417;
-    int minMaskPosition = 230;
+    int minMaskPosition = 260;
 
 
+    public Color HealthbarColor
+    {
+        get 
+        {
+            return healthbarColor.color;
+        }
+        set 
+        {
+            healthbarColor.color = value;
+        }
+    }
+
+    public bool MaxHealth { get; private set; }
     //returns the value of current health
     //if you set the value you need to get the current health and set it with the subtracted value
     public int Health
@@ -24,6 +39,7 @@ public class HealthbarManipulator : MonoBehaviour
             {
                 Debug.Log($"Value: {value} is out of Range! Range from 0 to {maxHealth}");
                 value = maxHealth;
+                MaxHealth = true;
                 return;
             }
             currentHealth = value;
@@ -64,6 +80,7 @@ public class HealthbarManipulator : MonoBehaviour
         else
         {
             healthMask.transform.position = new Vector3(healthMask.position.x, minMaskPosition, healthMask.position.z);
+            MaxHealth = false;
         }
     }
 }

@@ -15,6 +15,7 @@ public class PlayerCourageManager : MonoBehaviour
     private bool coroutineAktive = false;
 
     private bool setHealthColoRoutineIsRunning = false;
+    private VFXManager vfxManager;
 
 
     private Color orangeColor = new Color(1, .6f, 0);
@@ -23,6 +24,7 @@ public class PlayerCourageManager : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        vfxManager = FindObjectOfType<VFXManager>();
         healthbarManipulator.Health = 3;
         startHealth = healthbarManipulator.Health;
         currentHealth = startHealth;
@@ -56,15 +58,19 @@ public class PlayerCourageManager : MonoBehaviour
 
     }
 
+
+    //Couragemode is active
     private IEnumerator SetHealthbarColorRoutine()
     {
         healthbarManipulator.HealthbarColor = orangeColor;
+        vfxManager.PlayVFX = true; //start vfx
         while (healthbarManipulator.MaxHealth)
         {
             currentHealth -= healthUpdateAmount;
             healthbarManipulator.Health = currentHealth;
             yield return new WaitForSeconds(healthResetSpeed);
         }
+        vfxManager.PlayVFX = false; //end vfx
 
         healthbarManipulator.HealthbarColor = yellowColor;
 

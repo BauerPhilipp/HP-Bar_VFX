@@ -12,7 +12,7 @@ public class HealthbarManipulator : MonoBehaviour
 
     //Y boundaries of the mask
     int maxMaskPosition = 1417;
-    int minMaskPosition = 260;
+    int minMaskPosition = 375; //260 or 375
 
 
     public Color HealthbarColor
@@ -72,7 +72,7 @@ public class HealthbarManipulator : MonoBehaviour
         if(currentHealth > 0) 
         {
             float healthPercentage = (float)currentHealth / maxHealth;
-            Debug.Log(healthPercentage);
+            //Debug.Log(healthPercentage);
             float maskValueRange = maxMaskPosition - minMaskPosition;
             healthMask.transform.position = new Vector3(
                 healthMask.position.x, minMaskPosition + maskValueRange * healthPercentage, healthMask.position.z);

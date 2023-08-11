@@ -8,12 +8,13 @@ public class VFXManager : MonoBehaviour
 
     [SerializeField] bool playVFX = false;
     public bool PlayVFX { get { return playVFX; } set { playVFX = value; } }
-    
 
-    private VisualEffect playerCourageVFX;
+
+    //private VisualEffect playerCourageVFX;
+    [SerializeField] private ParticleSystem particleSystem;
     private void Start()
     {
-        playerCourageVFX = GetComponent<VisualEffect>();
+        //playerCourageVFX = GetComponent<VisualEffect>();
     }
 
     // Update is called once per frame
@@ -21,10 +22,12 @@ public class VFXManager : MonoBehaviour
     {
         if (playVFX)
         {
-            playerCourageVFX.Play();
+            //playerCourageVFX.Play();
+            particleSystem.Play();
         }else if (!playVFX)
         {
-            playerCourageVFX.Stop();
+            //playerCourageVFX.Stop();
+            particleSystem.Stop();
         }
     }
 }

@@ -51,7 +51,7 @@ public class PlayerCourageManager : MonoBehaviour
     {
         if (healthbarManipulator.MaxHealth && !setHealthColoRoutineIsRunning)
         {
-            Debug.Log("Yellow coroutine started");
+            //Debug.Log("Yellow coroutine started");
             setHealthColoRoutineIsRunning = true;
             StartCoroutine(SetHealthbarColorRoutine());
         }
@@ -82,7 +82,7 @@ public class PlayerCourageManager : MonoBehaviour
         coroutineAktive = true;
         currentHealth += healthUpdateAmount;
         healthbarManipulator.Health = currentHealth;
-        Debug.Log(healthbarManipulator.Health);
+        //Debug.Log(healthbarManipulator.Health);
         yield return new WaitForSeconds(healthUpdateSpeed);
         coroutineAktive = false;
 

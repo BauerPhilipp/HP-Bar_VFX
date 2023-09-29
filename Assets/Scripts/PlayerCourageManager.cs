@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerCourageManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerCourageManager : MonoBehaviour
     [SerializeField] float healthUpdateSpeed = 1f;
     [SerializeField] int healthUpdateAmount = 1;
     [SerializeField] float healthResetSpeed = 1f;
+    [SerializeField] float delayBeforeHealthbarReset = 2;
     [SerializeField] HealthbarManipulator healthbarManipulator;
     PlayerController playerController;
 
@@ -18,7 +20,7 @@ public class PlayerCourageManager : MonoBehaviour
     private VFXManager vfxManager;
 
 
-    private Color orangeColor = new Color(1, .6f, 0);
+    private Color orangeColor = new Color32(255,102,0, 255);
     private Color yellowColor = Color.yellow;
 
     private void Awake()
@@ -64,14 +66,15 @@ public class PlayerCourageManager : MonoBehaviour
     {
         healthbarManipulator.HealthbarColor = orangeColor;
         vfxManager.PlayVFX = true; //start vfx
+        yield return new WaitForSeconds(delayBeforeHealthbarReset);
+        vfxManager.PlayVFX = false; //end vfx
         while (healthbarManipulator.MaxHealth)
         {
             currentHealth -= healthUpdateAmount;
             healthbarManipulator.Health = currentHealth;
             yield return new WaitForSeconds(healthResetSpeed);
         }
-        vfxManager.PlayVFX = false; //end vfx
-
+        
         healthbarManipulator.HealthbarColor = yellowColor;
 
         setHealthColoRoutineIsRunning = false;

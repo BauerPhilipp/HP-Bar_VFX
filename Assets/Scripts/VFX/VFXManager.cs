@@ -15,7 +15,7 @@ public class VFXManager : MonoBehaviour
 
 
     //private VisualEffect playerCourageVFX;
-    [SerializeField] private VisualEffect vfxBeam;
+    [SerializeField] private GameObject vfxBeam;
     [SerializeField] private GameObject vfxCircle01;
     private void Start()
     {
@@ -28,13 +28,13 @@ public class VFXManager : MonoBehaviour
         if (playVFX && !playVFXActive)
         {
             playVFXActive = true;
-            vfxBeam.SetFloat("Particles", particleCount);
+            //vfxBeam.SetFloat("Particles", particleCount);
             PlayVfx();
             Debug.Log("Play in update");
             PlayVFXEvent?.Invoke();
         }else if (!playVFX && playVFXActive)
         {
-            vfxBeam.SetFloat("Particles", 0);
+            //vfxBeam.SetFloat("Particles", 0);
             StartCoroutine(StopAnimation());
             Debug.Log("Stop in update");
         }
@@ -51,13 +51,13 @@ public class VFXManager : MonoBehaviour
 
     private void PlayVfx()
     {
-        vfxBeam.Play();
+        vfxBeam.SetActive(true);
         vfxCircle01.SetActive(true);
     }
 
     private void StopVfx()
     {
-        vfxBeam.Stop();
+        vfxBeam.SetActive(false);
         vfxCircle01.SetActive(false);
 
     }

@@ -10,6 +10,7 @@ public class PlayerCourageManager : MonoBehaviour
     [SerializeField] float healthResetSpeed = 1f;
     [SerializeField] float delayBeforeHealthbarReset = 2;
     [SerializeField] HealthbarManipulator healthbarManipulator;
+    [SerializeField] Material orangeGlowMat;
     PlayerController playerController;
 
     private int startHealth;
@@ -68,6 +69,8 @@ public class PlayerCourageManager : MonoBehaviour
         vfxManager.PlayVFX = true; //start vfx
         yield return new WaitForSeconds(delayBeforeHealthbarReset);
         vfxManager.PlayVFX = false; //end vfx
+        orangeGlowMat.SetFloat("_Scale", 1.05f);
+
         while (healthbarManipulator.MaxHealth)
         {
             currentHealth -= healthUpdateAmount;
@@ -76,6 +79,9 @@ public class PlayerCourageManager : MonoBehaviour
         }
         
         healthbarManipulator.HealthbarColor = yellowColor;
+        orangeGlowMat.SetFloat("_Scale", 0.9f);
+
+
 
         setHealthColoRoutineIsRunning = false;
     }

@@ -5875,6 +5875,7 @@ MonoBehaviour:
   healthResetSpeed: 0.01
   delayBeforeHealthbarReset: 2
   healthbarManipulator: {fileID: 991065001}
+  orangeGlowMat: {fileID: 2100000, guid: 7d9c27a8241a1c241bdcef9f1012b83c, type: 2}
 --- !u!114 &1279825188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5888,7 +5889,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playVFX: 0
-  particleCount: 30
   vfxBeam: {fileID: 883011321}
   vfxCircle01: {fileID: 1381649868}
 --- !u!1 &1280684709

@@ -9,7 +9,7 @@ public class VFXManager : MonoBehaviour
     public static event Action PlayVFXEvent;
 
     [SerializeField] bool playVFX = false;
-    [SerializeField] float particleCount;
+    //[SerializeField] float particleCount;
     public bool PlayVFX { get { return playVFX; } set { playVFX = value; } }
     private bool playVFXActive = false;
 

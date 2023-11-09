@@ -4571,7 +4571,6 @@ GameObject:
   - component: {fileID: 991065000}
   - component: {fileID: 991064999}
   - component: {fileID: 991065001}
-  - component: {fileID: 991065002}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -4624,20 +4623,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthMask: {fileID: 1528726310}
-  maxHealth: 500
+  maxHealth: 1000
   healthbarColor: {fileID: 1612288018}
---- !u!114 &991065002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991064998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e0b0417cc1f644a9bd10198b70ef7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &991979305
 GameObject:
   m_ObjectHideFlags: 0
@@ -5870,7 +5857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8a37c970af8e44a8f9fefb2fba71fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthUpdateSpeed: 0.0001
+  healthUpdateSpeed: 0.001
   healthUpdateAmount: 2
   healthResetSpeed: 0.01
   delayBeforeHealthbarReset: 2
